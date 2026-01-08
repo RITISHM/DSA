@@ -8,7 +8,7 @@ class Solution {
                 break;
             }
         }
-        for (int j=0;j<=i;j++)ans+=num.charAt(j);
-        return ans;
+        if (i==-1)return "";
+        return num.substring(0,i+1);
     }
 }
