@@ -32,6 +32,7 @@ class Solution {
          curr3.next=newNode ;
          curr3=curr3.next;
      }
+     System.gc();
       return head3.next;
         
     }
