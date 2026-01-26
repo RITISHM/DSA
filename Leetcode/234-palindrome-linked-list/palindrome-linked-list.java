@@ -22,7 +22,6 @@ class Solution {
         }
         if (fast!=null)slow=slow.next;
         while (slow!=null ){
-            System.out.println("slow"+slow.val+" st"+st.peek());
             if (slow.val!=st.pop())return false ;
             slow=slow.next;
         }
