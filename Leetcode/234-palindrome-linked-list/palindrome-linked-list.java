@@ -8,37 +8,27 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+ import java.util.Stack;
 class Solution {
-    public ListNode reverseFrom(ListNode head){
-        ListNode prev=null;
-        ListNode curr=head;
-        while (curr!=null){
-            ListNode n=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=n;
-        }
-        return prev;
-    }
     public boolean isPalindrome(ListNode head) {
         if (head==null||head.next==null)return true ;
         ListNode slow=head;
         ListNode fast=head;
-
+        Stack<Integer> st=new Stack<>();
         while (fast!=null&&fast.next!=null){
-            fast=fast.next.next;
+            st.push(slow.val);
             slow=slow.next;
+            fast=fast.next.next;
         }
-        slow=reverseFrom(slow);
-        while (slow!=null){
-            if (slow.val!=head.val){
+        if (fast!=null)slow=slow.next;
+        while (slow!=null ){
+            if (slow.val!=st.pop()){
                 System.gc();
-                return false;
+                return false ;
             }
             slow=slow.next;
-            head=head.next;
         }
         System.gc();
-        return true;
+        return true ;       
     }
 }
